@@ -26,9 +26,10 @@ MongoDB, Expressjs, React, Nodejs
 $ cd frontend          // go to frontend folder
 $ npm i    // npm install packages
 $ npm run dev        // run it locally
-
+```
 ## Server-side usage(PORT: 5000)
 ```terminal
 $ cd backend   // go to backend folder
 $ npm i       // npm install packages
 $ npm run start // run it locally
+```
