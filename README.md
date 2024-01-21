@@ -2,7 +2,7 @@
 🌐 To do app
 </h1>
 <p align="center">
-MongoDB, Expressjs, React/Redux, Nodejs
+MongoDB, Expressjs, React, Nodejs
 </p>
 
 ## File structure
@@ -19,3 +19,16 @@ MongoDB, Expressjs, React/Redux, Nodejs
 - #### `package.json` - Defines npm behaviors and packages for the client
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
+
+
+## Client-side usage
+```terminal
+$ cd frontend          // go to frontend folder
+$ npm i    // npm install packages
+$ npm run dev        // run it locally
+
+## Server-side usage(PORT: 5000)
+```terminal
+$ cd backend   // go to backend folder
+$ npm i       // npm install packages
+$ npm run start // run it locally
