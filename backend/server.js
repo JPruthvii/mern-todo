@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Todo = require('./models/Todo');
 
+//app instance
 const app = express();
+
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = 'mongodb://127.0.0.1:27017/todo';
 
@@ -22,7 +24,6 @@ app.use(cors());
 app.post('/todos', async (req, res) => {
   try {
     const todo = new Todo(req.body);
-    console.log(todo);
     await todo.save();
     res.status(201).send(todo);
   } catch (error) {
@@ -30,15 +31,24 @@ app.post('/todos', async (req, res) => {
   }
 });
 
-// Get all todos
+// Get all todos with optional search
 app.get('/todos', async (req, res) => {
   try {
-    const todos = await Todo.find();
-    res.send(todos);
+    let query = {};
+
+    // Check if a search keyword is provided
+    if (req.query.keyword) {
+      // Case-insensitive search for the 'title' field
+      query.text = new RegExp(req.query.keyword, 'ig');
+    }
+
+    const todos = await Todo.find(query);
+    res.status(200).send(todos);
   } catch (error) {
     res.status(500).send(error);
   }
 });
+
 
 // Update a todo (including marking it as completed)
 app.patch('/todos/:id', async (req, res) => {
